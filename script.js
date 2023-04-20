@@ -11,10 +11,11 @@ function AddItem(item){
     totalAmount[item] = Number.parseFloat(productValue[item]) * qtd[item];
     amount.innerHTML = qtd[item];
     total.innerHTML = totalAmount[item].toFixed(2);
-    
+    purchaseValue();
 }
 
 function removeItem(item){
+    
     if(qtd[item] > 0){
         qtd[item] -= 1;
         var amount = document.getElementById("amount" + item);
@@ -22,10 +23,18 @@ function removeItem(item){
         amount.innerHTML = qtd[item];
         totalAmount[item] = Number.parseFloat(productValue[item]) * qtd[item];
         total.innerHTML = totalAmount[item].toFixed(2);
-        
+        purchaseValue();
     }
 }
 
 function purchaseValue(){
-    
+
+    var totalPurchaseAmount = document.getElementById("totalPurchaseAmount");
+    var value = 0;
+
+    for(var i = 0; i < totalAmount.length; i++){
+        value += totalAmount[i];
+    }
+
+    totalPurchaseAmount.innerHTML = value.toFixed(2);
 }
