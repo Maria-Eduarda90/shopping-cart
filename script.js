@@ -15,7 +15,15 @@ function AddItem(item){
 }
 
 function removeItem(item){
-    
+    if(qtd[item] > 0){
+        qtd[item] -= 1;
+        var amount = document.getElementById("amount" + item);
+        var total = document.getElementById("total" + item);
+        amount.innerHTML = qtd[item];
+        totalAmount[item] = Number.parseFloat(productValue[item]) * qtd[item];
+        total.innerHTML = totalAmount[item].toFixed(2);
+        
+    }
 }
 
 function purchaseValue(){
